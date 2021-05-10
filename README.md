@@ -1,39 +1,44 @@
-# Descripción
+# Andalucía COVID Dashboard
+## _Proyecto de fin de ciclo de DAW_
 
-Proyecto de fin de ciclo de Desarrollo de aplicaciones Web
+[![N|Solid](https://www.djangoproject.com/m/img/badges/djangomade124x25.gif)](https://nodesource.com/products/nsolid)
+
+Aplicación web realizada para el trabajo de fin de ciclo de Desarrollo de Aplicaciones Web sobre la evolución del COVID en Andalucía.
+
+- Visualización de datos con Chart.js
+- Mapeo y tratamiento de datos con Pandas
+- HTML5,CSS3, Javascript
+- SQL (PostgreSQL)
+
+## Tech
+Este proyecto utiliza:
+
+- [Django Framework] - The web framework for perfectionists with deadlines. 
+- [Twitter Bootstrap] - Great UI boilerplate for modern web apps
+- [PostgreSQL] - PostgreSQL: The world's most advanced open source database
+- [Pandas] - Fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language
+- [Charts.js] - Open source HTML5 Charts for your website
+- [jQuery] -  a lightweight, "write less, do more", JavaScript library.
 
 ## Instalación
-
-Instalar las librerías necesarias.
-
+**Instalar las librerías necesarias.**
 ```
 pip install -r requirements.txt 
 ```
 
-## Inicializar la base de datos
-
-Añadir los datos
-
-* Añadir los territorios 
-
-```
-python .\manage.py set_territories
-```
-
-* Actualizar los datos
+**Actualizar los datos**
 
 ```
 python .\manage.py get_acumulated --territorio [parámetro]
 ```
-
+Ejemplos de uso 
 ```
--p Provincias
--all Región de Andalucía
--mun Municipios de Andalucía
+python .\manage.py get_acumulated --territorio -all  # Datos acumulados de Andalucía
+python .\manage.py get_acumulated --territorio -mun  # Datos acumulados de municipios
+python .\manage.py get_acumulated --territorio -pro  # Datos acumulados de provincias
 ```
 
-* Obtener los históricos (hastael 30/04/2021)
-
+**Obtener el histórico de datos del COVID19 en Andalucía**
 ```
 python .\manage.py get_historic   
 ```
