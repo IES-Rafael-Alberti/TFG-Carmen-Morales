@@ -6,8 +6,6 @@ from rest_framework.response import Response
 from datetime import timedelta, date, datetime
 
 # APP VIEWS
-
-
 def dash_general_view(request):
     dataAument = []
     dataHospitalizedCounter = []
@@ -66,38 +64,12 @@ def dash_general_view(request):
         'percentageAument':percentageAument
     })
 
-def dash_search_view(request, template_name='dash_search_view.html'):
-    listings = []
-    context_dict = {}
-
-    if request.GET.get('search'):
-        nameFilter = request.GET.get('search')
-        print(request.POST.get('id1', True))
-        print(request.POST.get('id2', True))
-
-        if (request.POST.get('id1', True) & (request.POST.get('id2',False))):
-            listings = Township.objects.filter(name__contains=nameFilter)
-        elif (request.POST.get('id1', False) & (request.POST.get('id2',True))):
-            listings = Province.objects.filter(name__contains=nameFilter)
-        else:
-             listings = Province.objects.filter(name__contains=nameFilter)
-             if (listings.count()==0):
-                listings = Township.objects.filter(name__contains=nameFilter)
-
-    if (listings.count()==0):
-        # view error 
-        print("No existe")
-    else:
-        if (isinstance(listings[0],Province)):
-            territoryToView = listings[0]
-            tasa14days =  territoryToView.tasa14days
-            return dash_province_detail_view(request,territoryToView.pk)
-            
-        else:
-            territoryToView = listings[0]
-            dash_province_detail_view(request,territoryToView.pk)
-            template = "dash_province_detail_view.html"
-            return dash_township_detail_view(request,territoryToView[0])
+def dash_search_view(request):
+    resultsFilter = []
+    
+    nameFilter = request.GET.get('something')
+    territoryToView = Township.objects.filter(name=nameFilter)
+    return dash_township_detail_view(request,territoryToView.first())
 
 def dash_province_view(request):
     provinces = Province.objects.order_by('name')
@@ -120,14 +92,14 @@ def dash_province_view(request):
 
         if (registerAcum.count()>0):
             etiquetas.append(province.name)
-            deceasedToAdd = registerAcum[0].deceased - registerAcum[1].deceased
-            recoveredToAdd = registerAcum[0].recovered - registerAcum[1].recovered
-            pcr14days.append(registerAcum[0].pcr14days)
-            pcr7days.append(registerAcum[0].pcr7days)
-            ICU.append(registerAcum[0].ICU  - registerAcum[1].ICU)
+            deceasedToAdd = registerAcum.first().deceased - registerAcum[1].deceased
+            recoveredToAdd = registerAcum.first().recovered - registerAcum[1].recovered
+            pcr14days.append(registerAcum.first().pcr14days)
+            pcr7days.append(registerAcum.first().pcr7days)
+            ICU.append(registerAcum.first().ICU  - registerAcum[1].ICU)
             deceased.append(deceasedToAdd)
             recovered.append(recoveredToAdd)
-            provincesIncidence.append(registerAcum[0].aument)
+            provincesIncidence.append(registerAcum.first().aument)
             tasa14dias.append(province.tasa14days)    
             recovereList.append(province.recovered)    
        
@@ -159,7 +131,6 @@ def dash_province_detail_view(request,pk):
     townshipsProv = []
     townships500 = []
     townships1000 = []
-
     size = queryset.count()
     count = 0
     dataHospitalizedCounter = []
@@ -173,10 +144,10 @@ def dash_province_detail_view(request,pk):
                 townshipsProv.append(tship)
 
     for township in townshipsProv:
-        if township.tasa14days > 500:
+        if (township.tasa14days >= 500 and township.tasa14days < 1000 ):
            townships500.append(township.name) 
-        if township.tasa14days > 1000:
-           townships1000.append(township.name)    
+        if (township.tasa14days >= 1000 and township.name not in townships500):
+                townships1000.append(township.name)    
 
     for register in queryset:
         etiquetas.append(str(register.date.day) + '/' + str(register.date.month))
@@ -195,11 +166,6 @@ def dash_province_detail_view(request,pk):
 
     regi1 = AcumulatedProvinces.objects.order_by('date')[0]
     regi2 = AcumulatedProvinces.objects.order_by('date')[1]
-
-
-    print(request.GET.get('sel1'))
-    print(request.GET.get('sel2'))
-
 
     return render(request, 'dash_province_detail_view.html', {
         'labels': etiquetas,

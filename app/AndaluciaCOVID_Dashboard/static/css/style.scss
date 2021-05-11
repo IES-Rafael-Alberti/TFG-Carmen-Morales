@@ -43,6 +43,17 @@ body {
 .header {
     grid-area: header;
     background-color: $_bgshadow-color;
+    align-items: center;
+    display: -webkit-box;
+    display: flex;
+    padding: 0.5em 0.5em 0.5em 1em;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.header .button {
+    margin-right: 50%;
 }
 
 .aside {
@@ -304,14 +315,6 @@ body {
 }
 
 // FORMS
-.md-checkbox {
-    font-family: 'Montserrat', sans-serif;
-}
-
-$checkbox-background: #fff;
-$checkbox-border: #e900ff;
-$checkbox-checked: $checkbox-border;
-$checkbox-background-checked: yellow;
 // TABLES
 .table {
     height: 60vh;
@@ -342,6 +345,20 @@ $checkbox-background-checked: yellow;
 
 table {
     font-family: 'Montserrat', sans-serif;
+}
+
+// SEARCH
+input {
+    height: 32px;
+    font-size: 14px;
+    width: 80%;
+    margin-left: 8px;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+}
+
+input:focus {
+    outline: none;
 }
 
 // BUTTONS
@@ -394,28 +411,6 @@ button:hover {
 }
 
 // ANIMATIONS
-@keyframes bounce {
-    0%,
-    100%,
-    20%,
-    50%,
-    80% {
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
-    }
-    40% {
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-    }
-    60% {
-        -webkit-transform: translateY(-15px);
-        -ms-transform: translateY(-15px);
-        transform: translateY(-15px);
-    }
-}
-
 //MEDIA-QUERIES
 @media only screen and (min-width: 750px) {
     .aside_close-icon {
