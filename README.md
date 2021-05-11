@@ -43,5 +43,8 @@ python .\manage.py get_acumulated --territorio -pro  # Datos acumulados de provi
 python .\manage.py get_historic   
 ```
 
+**Fuentes de los datos**
+- [Datos de @Pakillo19] - https://github.com/Pakillo/COVID19-Andalucia/blob/master/datos/datos_provincias_clean.csv
+- [Junta de Andalucía - IECA] - https://www.juntadeandalucia.es/institutodeestadisticaycartografia/salud/index.htm
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
