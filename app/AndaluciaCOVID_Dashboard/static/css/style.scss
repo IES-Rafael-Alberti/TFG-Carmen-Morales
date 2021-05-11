@@ -36,7 +36,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr 50px;
-    grid-template-areas: "header" "main" "footer";
+    grid-template-areas: "header""main""footer";
     height: 100vh;
 }
 
@@ -213,7 +213,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 500px 400px 400px;
-    grid-template-areas: "card1" "card2" "card3";
+    grid-template-areas: "card1""card2""card3";
     grid-gap: 10px;
 }
 
@@ -252,7 +252,7 @@ body {
         display: grid;
         grid-template-columns: 200px 1fr;
         grid-template-rows: 50px 1fr 50px;
-        grid-template-areas: "aside header" "aside main" "aside footer";
+        grid-template-areas: "aside header""aside main""aside footer";
         height: 100vh;
     }
     .aside {
@@ -266,7 +266,7 @@ body {
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-template-rows: 200px 300px;
-        grid-template-areas: "card1 card2" "card1 card3";
+        grid-template-areas: "card1 card2""card1 card3";
         grid-gap: 10px;
     }
 }
