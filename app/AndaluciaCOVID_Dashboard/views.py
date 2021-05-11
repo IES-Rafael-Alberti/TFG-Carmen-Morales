@@ -72,6 +72,8 @@ def dash_search_view(request, template_name='dash_search_view.html'):
 
     if request.GET.get('search'):
         nameFilter = request.GET.get('search')
+        print(request.POST.get('id1', True))
+        print(request.POST.get('id2', True))
 
         if (request.POST.get('id1', True) & (request.POST.get('id2',False))):
             listings = Township.objects.filter(name__contains=nameFilter)
@@ -83,19 +85,19 @@ def dash_search_view(request, template_name='dash_search_view.html'):
                 listings = Township.objects.filter(name__contains=nameFilter)
 
     if (listings.count()==0):
-        template_name = "dash_not_found.html"
+        # view error 
+        print("No existe")
     else:
         if (isinstance(listings[0],Province)):
             territoryToView = listings[0]
-            tasa14days =  listings[0].tasa14days
-            template_name = "dash_province_detail_view.html"
+            tasa14days =  territoryToView.tasa14days
+            return dash_province_detail_view(request,territoryToView.pk)
+            
         else:
             territoryToView = listings[0]
-            tasa14days =  listings[0].tasa14days   
-            template_name = "dash_township_detail_view.html"    
-        context_dict = {'tasa14days': tasa14days}
-
-    return render(request, template_name, context_dict)
+            dash_province_detail_view(request,territoryToView.pk)
+            template = "dash_province_detail_view.html"
+            return dash_township_detail_view(request,territoryToView[0])
 
 def dash_province_view(request):
     provinces = Province.objects.order_by('name')
@@ -143,7 +145,6 @@ def dash_province_view(request):
     })
 
 def dash_province_detail_view(request,pk):
-    
     start = datetime.now() - timedelta(days=14)
     start_dt = start.date()
     end_dt = datetime.now().date()
