@@ -100,9 +100,9 @@
         $('#something').on('input', function () {
           var url = "{% url 'dash_township_detail_view' 123 %}";
           var opt = $('option[value="' + $(this).val() + '"]');
-          alert(opt.length ? opt.attr('id') : 'NO OPTION');
-          document.location.href = url.replace('123', opt.attr('id'));
-
+          if (opt.attr('id')!=null && opt.attr('id')!=undefined) {
+          document.location.href = url.replace('123', opt.attr('id'))
+          };
         });
       });
     </script>

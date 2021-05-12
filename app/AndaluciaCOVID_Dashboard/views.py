@@ -185,15 +185,54 @@ def dash_province_detail_view(request,pk):
     })
 
 def dash_township_detail_view(request,pk):
-    ts = Township.objects.filter(pk=pk)[0]
+    start = datetime.now() - timedelta(days=14)
+    start_dt = start.date()
+    end_dt = datetime.now().date()
+    tship = Township.objects.filter(pk=pk)[0]
     etiquetas = []
-    incidence = []
-    ICU = []
+    queryset = HistoricTownship.objects.order_by('-date').filter(township=tship,date__range=(start_dt, end_dt))
+    confirmed14days = []
+    confirmed14days100hab = []
+    deceases = []
+    rules = 0
+    count = 0
+    size = queryset.count()
+
+    for register in queryset:
+        if (count == 0):
+            regComp = queryset[0]
+        count += 1
+        if (count < size):
+            regComp = queryset[count]
+            etiquetas.append(
+                str(queryset[count].date.day) + '/' + str(queryset[count].date.month))
+        confirmed14days.append(register.Confirmados_PCR_TA_14d)
+        confirmed14days100hab.append(register.confirmed14100hab)
+        deceases.append(register.deceases)
+
+    tshipTot1 = queryset[0].totalConfirmed
+    tshipTot2 = queryset[1].totalConfirmed
+
+    tshipAument = tshipTot1 - tshipTot2
+    tshipIncidence = tship.tasa14days
+    confirmedPDIA = tship.confirmedPDIA
+
+    if (tshipIncidence>=500 and tshipIncidence<=10000):
+        rules = 0
+    elif (tshipIncidence>=1000):
+        rules = 1    
+    else:
+        rules = 2
 
     return render(request, 'dash_township_detail_view.html', {
         'labels': etiquetas,
-        'provinceIncidence': provinceIncidence,
-        'UCI':ICU
+        'confirmed14days':confirmed14days,
+        'tshipAument': tshipAument,
+        'tshipIncidence':tshipIncidence,
+        'confirmed14days100hab':confirmed14days100hab,
+        'rules': rules,
+        'confirmedPDIA':confirmedPDIA,
+        'deceases':deceases
     })   
 
 
