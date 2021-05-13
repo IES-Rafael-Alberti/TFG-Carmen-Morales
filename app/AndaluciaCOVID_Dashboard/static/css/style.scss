@@ -419,6 +419,7 @@ button:hover {
     }
 }
 
+// DARK THEME 
 @media (prefers-color-scheme: light) {
     .grid-container {
         background-color: rgb(198, 219, 198);
@@ -451,10 +452,6 @@ button:hover {
 
     .card {
         background-color: #414141;
-        color: rgb(255, 255, 255);
-    }
-
-    .chartjs-size-monitor {
         color: rgb(255, 255, 255);
     }
 
