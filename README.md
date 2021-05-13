@@ -10,30 +10,6 @@ Aplicación web realizada para el trabajo de fin de ciclo de Desarrollo de Aplic
 - HTML5,CSS3, Javascript
 - SQL (PostgreSQL)
 
-## Tech
-Este proyecto utiliza:
-
-- [Django Framework] - The web framework for perfectionists with deadlines. 
-- [Twitter Bootstrap] - Great UI boilerplate for modern web apps
-- [PostgreSQL] - PostgreSQL: The world's most advanced open source database
-- [Pandas] - Fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language
-- [Charts.js] - Open source HTML5 Charts for your website
-- [jQuery] -  a lightweight, "write less, do more", JavaScript library.
-
-## Instalación
-**Instalar las librerías necesarias.**
-# Andalucía COVID Dashboard
-## _Proyecto de fin de ciclo de DAW_
-
-[![N|Solid](https://www.djangoproject.com/m/img/badges/djangomade124x25.gif)](https://nodesource.com/products/nsolid)
-
-Aplicación web realizada para el trabajo de fin de ciclo de Desarrollo de Aplicaciones Web sobre la evolución del COVID en Andalucía.
-
-- Visualización de datos con Chart.js
-- Mapeo y tratamiento de datos con Pandas
-- HTML5,CSS3, Javascript
-- SQL (PostgreSQL)
-
 ## Tecnologías utilizadas
 Este proyecto utiliza:
 
