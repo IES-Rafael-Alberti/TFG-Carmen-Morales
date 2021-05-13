@@ -12,11 +12,9 @@ $_copper: #c46d5e;
 $_rosewood: #6b0504;
 $_cerise: #f00699;
 $_asidecolor: #ececec;
+
 //MIXINS
-@mixin position-absolute($top: null,
-$left: null,
-$right: null,
-$bottom: null) {
+@mixin position-absolute($top: null, $left: null, $right: null, $bottom: null) {
     position: absolute;
     top: $top;
     left: $left;
@@ -36,7 +34,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr 50px;
-    grid-template-areas: "header""main""footer";
+    grid-template-areas: "header" "main" "footer";
     height: 100vh;
 }
 
@@ -73,7 +71,6 @@ body {
     background-color: $_bgshadow-color;
 }
 
-
 /* flexing header and footer*/
 
 .header,
@@ -90,7 +87,6 @@ body {
     margin-left: 20px;
     height: 150px;
 }
-
 
 /* flexing aside */
 
@@ -205,7 +201,6 @@ body {
     font-family: "B612", sans-serif;
 }
 
-
 /* Layout for main-cards section // below main_overview */
 
 .main_cards {
@@ -213,7 +208,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 500px 400px 400px;
-    grid-template-areas: "card1""card2""card3";
+    grid-template-areas: "card1" "card2" "card3";
     grid-gap: 10px;
 }
 
@@ -244,7 +239,6 @@ body {
     color: #003400;
 }
 
-
 /* responsive layout */
 
 @media only screen and (min-width: 750px) {
@@ -252,21 +246,23 @@ body {
         display: grid;
         grid-template-columns: 200px 1fr;
         grid-template-rows: 50px 1fr 50px;
-        grid-template-areas: "aside header""aside main""aside footer";
+        grid-template-areas: "aside header" "aside main" "aside footer";
         height: 100vh;
     }
+
     .aside {
         display: flex;
         flex-direction: column;
         position: relative;
         transform: translateX(0);
     }
+
     .main_cards {
         margin: 10px;
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-template-rows: 200px 300px;
-        grid-template-areas: "card1 card2""card1 card3";
+        grid-template-areas: "card1 card2" "card1 card3";
         grid-gap: 10px;
     }
 }
@@ -329,18 +325,18 @@ body {
     margin-bottom: 10px;
 }
 
-.container>.fa,
+.container > .fa,
 .fas {
     color: #009688;
     margin-right: 10px;
 }
 
 .info {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .info_prov_detail {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin-top: 10px;
 }
 
@@ -349,7 +345,7 @@ body {
 }
 
 table {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 // SEARCH
@@ -358,7 +354,7 @@ input {
     font-size: 14px;
     width: 80%;
     margin-left: 8px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     border: none;
 }
 
@@ -402,7 +398,7 @@ input:focus {
     padding: 0 25.6px;
     font-weight: 300;
     font-size: 14px;
-    font-family: 'B612', sans-serif;
+    font-family: "B612", sans-serif;
     color: #666666;
     text-shadow: 0 1px 0 #fff;
     margin: 0;
@@ -415,11 +411,65 @@ button:hover {
     -moz-animation-name: bounce;
 }
 
-// ANIMATIONS
 //MEDIA-QUERIES
 @media only screen and (min-width: 750px) {
     .aside_close-icon {
         display: none;
         color: #000000;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .grid-container {
+        background-color: rgb(198, 219, 198);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .main {
+        background-color: #313131;
+    }
+
+    .aside {
+        background-color: #313131;
+        .aside_list-item {
+            color: rgb(255, 255, 255);
+        }
+        .aside_list-item .a {
+            color: whitesmoke;
+        }
+    }
+    .header {
+        background-color: #313131;
+    }
+
+    .footer {
+        background-color: #313131;
+        color: rgb(255, 255, 255);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .card {
+        background-color: #414141;
+        color: rgb(255, 255, 255);
+    }
+
+    .chartjs-size-monitor {
+        color: rgb(255, 255, 255);
+    }
+
+    .overview_card {
+        background-color: #414141;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+
+        .overview_card-info {
+            color: rgb(255, 255, 255);
+        }
+        .overview_card-icon {
+            color: rgb(255, 255, 255);
+        }
+        .card-day {
+            color: #009688;
+        }
     }
 }

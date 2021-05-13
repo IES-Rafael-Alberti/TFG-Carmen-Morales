@@ -190,7 +190,7 @@ def dash_township_detail_view(request,pk):
     end_dt = datetime.now().date()
     tship = Township.objects.filter(pk=pk)[0]
     etiquetas = []
-    queryset = HistoricTownship.objects.order_by('-date').filter(township=tship,date__range=(start_dt, end_dt))
+    queryset = HistoricTownship.objects.order_by('date').filter(township=tship,date__range=(start_dt, end_dt))
     confirmed14days = []
     confirmed14days100hab = []
     deceases = []

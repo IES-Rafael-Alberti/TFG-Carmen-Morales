@@ -33,16 +33,14 @@
   </script>
 </head>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andalucía COVID</title>
 </head>
-
 <body>
-  <div class="grid-container">
+  <div id="page" class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
     </div>
@@ -76,6 +74,8 @@
         {% block content %}{% endblock %}
       </div>
     </main>
+          <div class="footer">Datos actualizados el 12-05-2021</div>
+    </div>
     <script type="text/javascript">
       const menuIcon = document.querySelector('.menu-icon');
       const aside = document.querySelector('.aside');
