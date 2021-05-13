@@ -47,7 +47,7 @@ def dash_general_view(request):
     regi1 = AcumulatedRegion.objects.order_by('-date')[0].aument
     regi2 = AcumulatedRegion.objects.order_by('-date')[1].aument
 
-    percentageAument = round((regi1 - regi2)/regi2,2)
+    percentageAument = abs(round((regi1 - regi2)/regi2,2))
 
     return render(request, 'dash_general_view.html', {
         'labels': etiquetas1,
