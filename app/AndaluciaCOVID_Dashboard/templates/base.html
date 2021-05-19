@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   {% load static %}
@@ -15,10 +14,11 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-  {% load compress %} {% compress css %}
-  <link type="text/x-scss" href="{% static 'css/style.scss' %}" rel="stylesheet" media="screen" />
-  {% endcompress %}
-  <script>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andalucía COVID</title>
+    <script>
     $(document).ready(function () {
       $(".show_info").hide();
       $(".arrow").click(function () {
@@ -26,18 +26,10 @@
           $(".show_info").show(1000);
         } else {
           $(".show_info").hide(1000);
-
         }
       });
     });
   </script>
-</head>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andalucía COVID</title>
 </head>
 <body>
   <div id="page" class="grid-container">

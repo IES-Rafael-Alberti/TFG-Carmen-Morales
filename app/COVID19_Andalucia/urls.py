@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('AndaluciaCOVID_Dashboard.urlsapi')),
     path('app/', include('AndaluciaCOVID_Dashboard.urls')),
-    path('', RedirectView.as_view(url='/app/general', permanent=True))
+    path('', RedirectView.as_view(url='/app/general', permanent=True)),
+    
 
 ]
