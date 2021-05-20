@@ -14,6 +14,7 @@ fi
 python manage.py flush --no-input
 python manage.py migrate
 python manage.py makemigrations
+
 python manage.py set_territories
 python manage.py get_acumulated --territorio all
 python manage.py get_acumulated --territorio pro

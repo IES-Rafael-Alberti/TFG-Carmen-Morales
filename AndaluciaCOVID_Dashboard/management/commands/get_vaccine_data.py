@@ -55,7 +55,8 @@ class Command(BaseCommand):
                 regionUpdating.recovered = int(listRegister[9])
                 regionUpdating.save()
         except IndexError as e:
-            print(e)
+            print("¡Fecha sin datos!")
+
 
     def downloadCSV(self):
         """ 
@@ -72,9 +73,10 @@ class Command(BaseCommand):
             csv_file = open('datos/vacunacion/vacunaTipos.csv', 'wb')
             csv_file.close()
         except IndexError as e:
-            print(e)
+            print("¡Fecha sin datos!")
+
 
     def handle(self, *args, **options):
         print('Obteniendo datos de vacunación...')
         self.getVaccineData()
-        print('...MIGRATION SUCCESFUL!')
+        print('...MIGRACIÓN REALIZADA!')

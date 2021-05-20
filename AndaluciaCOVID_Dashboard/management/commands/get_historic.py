@@ -92,7 +92,7 @@ class Command(BaseCommand):
                                                 deceases=int(row[8]))
                             newHistoricDistrict.save()
         except IndexError as e:
-            print(e)
+            print("¡Fecha sin datos!")
     
     def setHistoricTownships(self):
         try:
@@ -117,7 +117,6 @@ class Command(BaseCommand):
             for tship in townshipList:
                 for row in (df[df["township"] == tship.name].values):
                     if (row[0]>covid_data_df):
-                        print(row[0])
                         tshipsel = Township.objects.filter(name=row[3])
                         ifExists = HistoricTownship.objects.filter(date=row[0],township=tshipsel[0])
                         if (ifExists.count()==0):
@@ -131,11 +130,12 @@ class Command(BaseCommand):
                             deceases=int(row[8]))
                             newHistoricTownship.save()
         except IndexError as e:
-            print(e)
+            print("¡Fecha sin datos!")
+
   
     def handle(self, *args, **options):
-        print('Updating...')
+        print('Obteniendo últimos históricos...')
         self.updateHistoricProvince()
         self.updateHistoricDistrict()
         self.setHistoricTownships()
-        print('...MIGRATION SUCCESFUL!')
+        print('...MIGRACIÓN REALIZADA!')

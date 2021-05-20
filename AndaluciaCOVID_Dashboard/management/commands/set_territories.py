@@ -21,7 +21,6 @@ class Command(BaseCommand):
             for listaDatos in (df[df["Lugar de residencia"] == "Andalucía"].values):
                 listData = listaDatos.tolist()
                 listRegister.append(listData[2])
-            print(listRegister)
             if (listRegister[4]==0):
                 valtasa14 = 0
             else:
@@ -102,7 +101,8 @@ class Command(BaseCommand):
                         township = Township(name=ts, distrit=district)
                         township.save()
         except IndexError as e:
-            print(e)
+            print("¡Fecha sin datos!")
+
 
     def getTshipData(self, munName):
         try:
@@ -168,16 +168,17 @@ class Command(BaseCommand):
             province.recovered = int(listRegister[9])
             province.save()    
         except IndexError as e:
-            print(e)     
+            print("¡Fecha sin datos!")
+ 
 
     def handle(self, *args, **options):
-        print('Adding region...')
+        print('Añadiendo región...')
         self.setRegions()
-        print('Adding provinces...')
+        print('Añadiendo provincias...')
         self.getProvinces()
-        print('Adding distrits...')
+        print('Añadiendo distritos...')
         self.getDistrFromProv()
-        print('Adding townships...')
+        print('Añadiendo municipios...')
         self.getTownShipFromDistr()
 
         townships = Township.objects.all()
@@ -187,4 +188,4 @@ class Command(BaseCommand):
             self.getTshipData(township.name)   
         for prov in provinces:
             self.getProvinceData(prov.name)               
-        print('...MIGRATION SUCCESFUL!')
+        print('...MIGRACIÓN REALIZADA!')
