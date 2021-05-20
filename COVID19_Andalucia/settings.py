@@ -21,13 +21,13 @@ DJANGO_SETTINGS_MODULE = 'COVID19_Andalucia.settings'
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xuwz^q-@9&y375#lt=t7hy&$6!hz-djfbn6o16wq+al$_kmq7h'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com','.herokuapp.com']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
 
@@ -40,14 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
-    'bourbon',
     'rest_framework',
     'AndaluciaCOVID_Dashboard'
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,9 +87,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'andalucia_covid',
-        'USER': 'django',
-        'PASSWORD': 'django',
-        'HOST': 'localhost',
+        'USER': os.environ.get("SQL_USER", "django"),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", "django"),
+        'HOST': os.environ.get("SQL_HOST", "db"),
         'PORT': 5432,
     }
 }
@@ -139,15 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder'
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
