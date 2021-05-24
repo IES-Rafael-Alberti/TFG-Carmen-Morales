@@ -4,7 +4,6 @@
 body {
     margin: 0;
     padding: 0;
-    color: #fff;
     box-sizing: border-box;
     font-size: 15px;
 }
@@ -270,6 +269,11 @@ body {
 .info_prov_detail b {
     font-family: "B612", sans-serif;
 }
+
+.p {
+    color: black;
+}
+
 table {
     font-family: "Montserrat", sans-serif;
 }

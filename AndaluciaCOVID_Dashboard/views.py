@@ -4,6 +4,8 @@ from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from datetime import timedelta, date, datetime
+from django.template import loader
+from django.http import HttpResponse
 
 # APP VIEWS
 def dash_general_view(request):
@@ -247,6 +249,11 @@ def handler500(request, *args, **argv):
                                   context_instance=RequestContext(request))
     response.status_code = 500
     return response
+
+def question_answers(request):
+    return render(request, 'questions_answers.html', {})
+
+
 # API VIEWS
 @api_view(['GET'])
 def apiOverview(request):
