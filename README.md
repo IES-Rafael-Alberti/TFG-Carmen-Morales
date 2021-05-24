@@ -104,7 +104,7 @@ Ir a `http://localhost:8000`
 Los datos recogidos en esta aplicación web son de uso público y de fuentes oficiales.
 - Datos de @Pakillo19 - https://github.com/Pakillo/COVID19-Andalucia/blob/master/datos/
 - IECA - https://www.juntadeandalucia.es/institutodeestadisticaycartografia/salud/
-- 
+
 ## :pencil: WIP
 <a name="wip"></a>	
   - [x]  Añadir modo oscuro
