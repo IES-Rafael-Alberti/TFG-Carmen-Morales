@@ -10,7 +10,7 @@ django.setup()
 from AndaluciaCOVID_Dashboard.models import *
 
 class Command(BaseCommand):
-    help = 'Use this command to populate de DB automatically'
+    help = 'Usa este comando para añadir los territorios de Andalucia la base de datos'
 
     def setRegions(self):
         directory = 'https://raw.githubusercontent.com/Pakillo/COVID19-Andalucia/master/datos/municipios.dia/Municipios_todos_datoshoy.csv'
@@ -57,7 +57,7 @@ class Command(BaseCommand):
 
     def getProvinces(self):
         """ 
-        Migrar a la base de datos las provincias,municipios y distritos de Andalucía
+        Añadir las provincias
         """
         try:
             directory = 'https://raw.githubusercontent.com/Pakillo/COVID19-Andalucia/master/datos/muni_prov_dist.csv'
@@ -66,7 +66,7 @@ class Command(BaseCommand):
             df.drop(df.index[[0, 2]])
             for prov in df.province:
                 print(prov)
-                if (Province.objects.filter(name=prov).exists() == False):
+                if (Province.objects.filter(name=prov).exists() == False and prov != "Provincia"):
                     region = Region.objects.all()[0]
                     province = Province(name=prov,ccaa=Region(id=0,name="Andalucía"))
                     province.save()
@@ -81,7 +81,7 @@ class Command(BaseCommand):
             provinces = Province.objects.all()
             for province in provinces:
                 for distr in df[df.province == province.name].distrit:
-                    if (District.objects.filter(name=distr).exists() == False):
+                    if (District.objects.filter(name=distr).exists() == False and distr != "Distrito"):
                         distr = District(name=distr, province=province)
                         distr.save()
 
@@ -97,7 +97,7 @@ class Command(BaseCommand):
             districts = District.objects.all()
             for district in districts:
                 for ts in df[df.distrit == district.name].township:
-                    if (Township.objects.filter(name=ts).exists() == False):
+                    if (Township.objects.filter(name=ts).exists() == False and ts != "Municipio"):
                         township = Township(name=ts, distrit=district)
                         township.save()
         except IndexError as e:

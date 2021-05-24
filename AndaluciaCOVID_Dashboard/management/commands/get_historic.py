@@ -11,7 +11,7 @@ django.setup()
 from AndaluciaCOVID_Dashboard.models import *
 
 class Command(BaseCommand):
-    help = 'Use this command to retrieve up-to-date data of COVID19 from IECA'
+    help = 'Usa este comando para obtener el histórico de dats de COVID'
 
     def updateHistoricProvince(self):
         try:

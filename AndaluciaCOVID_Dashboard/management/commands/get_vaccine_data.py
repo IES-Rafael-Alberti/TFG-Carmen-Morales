@@ -11,7 +11,7 @@ django.setup()
 
 
 class Command(BaseCommand):
-    help = 'Use this command to populate de DB automatically'
+    help = 'Usa este comando para obtener los datos de la vacunación'
 
     def getVaccineData(self):
         downloadCSV()
