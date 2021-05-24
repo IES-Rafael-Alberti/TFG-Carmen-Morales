@@ -20,7 +20,7 @@ Este proyecto utiliza:
 - [Charts.js] - Open source HTML5 Charts for your website
 - [jQuery] -  a lightweight, "write less, do more", JavaScript library.
 
-## Instalación
+## Instalación en local
 **Instalar las dependencias.**
 ```
 pip install -r requirements.txt 
@@ -42,6 +42,15 @@ python .\manage.py get_acumulated --territorio -pro  # Datos acumulados de provi
 ```
 python .\manage.py get_historic   
 ```
+
+## Instalación con docker
+
+```
+docker-compose up -d --build
+```
+Ir a localhost:8000
+
+La migración y la creación de los modelos se hace automáticamente
 
 ## Fuentes de los datos
 Los datos recogidos en esta aplicación web son de uso público y de fuentes oficiales.
