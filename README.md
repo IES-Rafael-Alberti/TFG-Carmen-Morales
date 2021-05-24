@@ -110,7 +110,7 @@ Los datos recogidos en esta aplicación web son de uso público y de fuentes ofi
   - [x]  Añadir modo oscuro
   - [ ]  Corregir diseño responsive
   - [ ]  Añadir HTTPS al despliegue
-  - [ ] Añadir tarea cron para actualización automática
+  - [x] Añadir tarea cron para actualización automática
  
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
