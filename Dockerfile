@@ -25,12 +25,15 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-ENV CGO_ENABLED=0
-# copy entrypoint 
-#COPY ./entrypoint.sh .
-
 # copy project
 COPY . .
 
-# run entrypoint.sh
-#ENTRYPOINT ["/bin/sh", "/usr/src/app/entrypoint.sh"]
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# Setup cron job
+ADD cron_job /etc/cron.d/hello-cron
+RUN dos2unix /etc/cron.d/hello-cron
+
+# Run the command on container startup
+CMD cron && tail -f /var/log/cron.log
