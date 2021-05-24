@@ -9,10 +9,10 @@
 - [3. Tecnologías escogidas y justificación](#tecnologías)			 
   - [3.1. Frameworks seleccionados](#framework)
   - [3.2. Motor de bases de datos](#bbdd)
-  - [3.3. Motor de bases de datos](#librerias)					    		 	 
-- [4. Instalación en local](#instalacion_local)  										  				    	  				
-- [5. Instalación en docker](#instalacion_docker)   						         					        		 
-- [6. Fuentes](#fuentes)   										 		  									       
+  - [3.3. Librerías](#librerias)					    		 	 
+- [4. Instalación en local](#instalacion_local)
+- [5. Instalación en docker](#instalacion_docker)
+- [6. Fuentes](#fuentes)
 - [7. Work in Progress](#WIP) 
   
 # :sparkles: Introducción
