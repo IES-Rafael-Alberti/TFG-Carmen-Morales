@@ -48,7 +48,7 @@ python .\manage.py get_historic
 ```
 docker-compose up -d --build
 ```
-Ir a localhost:8000
+Ir a http://localhost:8000
 
 La migración y la creación de los modelos se hace automáticamente
 
