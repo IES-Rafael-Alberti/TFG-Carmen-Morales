@@ -50,7 +50,15 @@ docker-compose up -d --build
 ```
 Ir a http://localhost:8000
 
-La migración y la creación de los modelos se hace automáticamente
+Hacer las migraciones necesarias
+
+```
+docker-compose exec web python manage.py set_territories
+docker-compose exec web python manage.py get_historics
+docker-compose exec web python manage.py get_acumulated --territorio -mun
+docker-compose exec web python manage.py get_acumulated --territorio -pro
+docker-compose exec web python manage.py get_acumulated --territorio -all
+```
 
 ## Fuentes de los datos
 Los datos recogidos en esta aplicación web son de uso público y de fuentes oficiales.
