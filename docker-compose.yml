@@ -3,13 +3,17 @@ version: '3.7'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py makemigrations && python manage.py set_territories && python manage.py get_acumulated --territorio all && python manage.py get_acumulated --territorio prov && python manage.py get_historics && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./:/usr/src/app/
     ports:
       - 8000:8000
     env_file:
-      - ./.env.dev
+      - ./.env.prod
+    restart: always
+    depends_on: 
+      - db
+
   db:
     image: postgres:12.0-alpine
     volumes:
@@ -17,6 +21,8 @@ services:
     environment:
         - POSTGRES_USER=django
         - POSTGRES_PASSWORD=django
-        - POSTGRES_DB=andalucia_covid
+        - POSTGRES_DB=andalucia_covid    
+    ports:
+        - "5432:5432"
 volumes:
-    postgres_data:      
+    postgres_data:     

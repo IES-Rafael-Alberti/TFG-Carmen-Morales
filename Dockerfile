@@ -18,18 +18,19 @@ RUN apk add --no-cache --update \
     libxslt libxslt-dev \
     libjpeg-turbo-dev zlib-dev \
     postgresql-dev libffi-dev libressl-dev libxml2 libxml2-dev libxslt libxslt-dev libjpeg-turbo-dev zlib-dev
+RUN apk add bash
 
 # install dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-
-# copy entrypoint.sh
-COPY ./entrypoint.sh .
+ENV CGO_ENABLED=0
+# copy entrypoint 
+#COPY ./entrypoint.sh .
 
 # copy project
 COPY . .
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+#ENTRYPOINT ["/bin/sh", "/usr/src/app/entrypoint.sh"]

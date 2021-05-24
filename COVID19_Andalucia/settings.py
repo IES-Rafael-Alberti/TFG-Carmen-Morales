@@ -27,7 +27,7 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = [os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")]
 
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
 
@@ -85,11 +85,11 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'andalucia_covid',
-        'USER': os.environ.get("SQL_USER", "django"),
-        'PASSWORD': os.environ.get("SQL_PASSWORD", "django"),
-        'HOST': os.environ.get("SQL_HOST", "db"),
+        'USER': "django",
+        'PASSWORD': "django",
+        'HOST': "db",
         'PORT': 5432,
     }
 }
