@@ -48,9 +48,7 @@ python .\manage.py get_historic
 ```
 docker-compose up -d --build
 ```
-Ir a http://localhost:8000
-
-Hacer las migraciones necesarias
+## Hacer las migraciones necesarias
 
 ```
 docker-compose exec web python manage.py set_territories
@@ -59,6 +57,8 @@ docker-compose exec web python manage.py get_acumulated --territorio -mun
 docker-compose exec web python manage.py get_acumulated --territorio -pro
 docker-compose exec web python manage.py get_acumulated --territorio -all
 ```
+
+Ir a http://localhost:8000
 
 ## Fuentes de los datos
 Los datos recogidos en esta aplicación web son de uso público y de fuentes oficiales.
