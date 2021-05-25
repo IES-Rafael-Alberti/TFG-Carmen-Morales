@@ -136,6 +136,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Obteniendo últimos históricos...')
         self.updateHistoricProvince()
-        self.updateHistoricDistrict()
+       #self.updateHistoricDistrict()
         self.setHistoricTownships()
         print('...MIGRACIÓN REALIZADA!')
