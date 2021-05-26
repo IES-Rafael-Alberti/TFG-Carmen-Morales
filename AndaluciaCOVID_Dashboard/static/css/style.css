@@ -343,8 +343,20 @@ button:hover {
    }
 }
 @media (prefers-color-scheme: dark) {
+    .info_prov_detail p,b {
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+    
+    a:hover {
+        color: #009688;
+    }
+    
     .main {
-        background-color: #313131;
+        background-color: #414141;
    }
     .aside {
         background-color: #313131;
@@ -353,7 +365,7 @@ button:hover {
         color: #fff;
    }
     .aside .aside_list-item .a {
-        color: whitesmoke;
+        color: white;
    }
     .header {
         background-color: #313131;
@@ -379,5 +391,8 @@ button:hover {
    }
     .overview_card .card-day {
         color: #009688;
+   }
+   p {
+       color: white
    }
 }
