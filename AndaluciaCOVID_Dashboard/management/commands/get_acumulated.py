@@ -90,7 +90,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Obteniendo los últimos datos acumulados...')
         argument = options["territorio"] if options["territorio"] else "mun"
-        townships = Township.objects.all()
         provinces = Province.objects.all()
 
         start = datetime.now() - timedelta(days=14)

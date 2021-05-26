@@ -120,7 +120,6 @@ class Command(BaseCommand):
                         tshipsel = Township.objects.filter(name=row[3])
                         ifExists = HistoricTownship.objects.filter(date=row[0],township=tshipsel[0])
                         if (ifExists.count()==0):
-                            print(row)       
                             newHistoricTownship = HistoricTownship(date=row[0],
                             township=tshipsel[0],
                             Confirmados_PCR_TA=int(row[4]),
