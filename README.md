@@ -82,7 +82,7 @@ python .\manage.py get_acumulated --territorio -pro  # Datos acumulados de provi
 python .\manage.py get_historic   
 ```
 
-## Instalación con docker
+## Instrucciones para desplegar el docker
 <a name="instalacion_docker"></a>	
 ```
 docker-compose up -d --build
@@ -90,11 +90,11 @@ docker-compose up -d --build
 ## Hacer las migraciones necesarias
 
 ```
-docker-compose exec web python manage.py set_territories
-docker-compose exec web python manage.py get_historics
-docker-compose exec web python manage.py get_acumulated --territorio -mun
-docker-compose exec web python manage.py get_acumulated --territorio -pro
-docker-compose exec web python manage.py get_acumulated --territorio -all
+docker-compose exec web python3 manage.py set_territories
+docker-compose exec web python3  manage.py get_historics
+docker-compose exec web python3 manage.py get_acumulated --territorio -mun
+docker-compose exec web python3 manage.py get_acumulated --territorio -pro
+docker-compose exec web python3  manage.py get_acumulated --territorio -all
 ```
 
 Ir a `http://localhost:8000`
