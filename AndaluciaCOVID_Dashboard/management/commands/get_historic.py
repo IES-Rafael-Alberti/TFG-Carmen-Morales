@@ -81,8 +81,7 @@ class Command(BaseCommand):
                     if (row[0]>=covid_data_df):
                         district = District.objects.filter(name=row[2])
                         ifExists = HistoricDistrit.objects.filter(date=row[0],distr=district[0])
-                        if (ifExists.count()==0):
-                            print(row)       
+                        if (ifExists.count()==0):    
                             newHistoricDistrict = HistoricDistrit(date=row[0],
                                                 distr=district[0],
                                                 Confirmados_PCR_TA=int(row[4]),

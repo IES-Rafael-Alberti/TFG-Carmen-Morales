@@ -1,39 +1,44 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
-<div class="overview_ts">
+{% extends 'base.html' %} {% block content %}
+<div>
+<h2>Incidencia</h2>
+<div class="overview_card-icon">Tasa a 14 días {{tasaInc14}}</div>
+<div class="overview_card-icon">Tasa a 7 días {{tasaInc7}}</div>
 </div>
-<div class="main_cards">
-  <div class="card">
-    Aumento de los diagnosticados a 14 días
-    <canvas
-      class="responsive-canvas"
-      id="pie-chart"
-      width="350"
-      height="230"
-    ></canvas>
-  </div>
-  <div class="card">
-  <div class="prov_info-general">
-<span class="label label-pill label-danger">IA 14 {{ tasaInc14 }}</span>
-<span class="label label-pill label-warning">IA 7  {{ tasaInc7 }}</span>
-    <p class="info_prov_detail">
-      <i class="fas fa-square-full"></i><b>Municipios +500 IA: </b> {{townships500|length }} <i class="arrow down"></i>
+<div>
+                <h2>Fallecidos y recuperados totales</h2>
+                <ul>
+                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
+                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Estado de los municipios</h2>
+                    <p class="info_prov_detail">
+      <b>Municipios +500 IA: </b> {{townships500|length }}
       <p class="show_info">{{townships500list}}</p>
     </p>
     <p class="info_prov_detail">
-      <i class="fas fa-square-full"></i
-      ><b>Municipios +100 IA </b> {{townships1000|length }} <i class="arrow down"></i>
+     <b>Municipios +100 IA </b> {{townships1000|length }}
         <p class="show_info">{{townships1000list}}</p>
-  </div>      
-  </div>
-  <div class="card">
-  Evolución en hospitales
-      <canvas
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento de los contagios</h2> 
+    <canvas
+      class="responsive-canvas"
+      id="pie-chart"
+    ></canvas>
+            </div>
+            <div>
+                <h2>Headline</h2> 
+     <canvas
       class="responsive-canvas"
       id="pie-chart3"
-      width="350"
-      height="150"
     ></canvas>
-  </div>
+            </div>
+        </div>
   <script>
         var ctx = document.getElementById('pie-chart').getContext('2d');
         var data_1 = {
@@ -49,9 +54,25 @@
         var chart1 = new Chart(ctx, {
             type: 'line',
             data: data_1,
-            options: {
-                        responsive: true
+        options: {
+            legend: {
+                labels: {
+                    fontColor: setColorText()
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
                     }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
                 });
 
           var ctx_3 = document.getElementById('pie-chart3').getContext('2d');
@@ -72,9 +93,25 @@
           var chart3 = new Chart(ctx_3, {
              type: 'bar',
             data: data_3,
-            options: {
-                responsive: true
+        options: {
+            legend: {
+                labels: {
+                    fontColor: setColorText()
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
                     }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
                 });
                 
   </script>

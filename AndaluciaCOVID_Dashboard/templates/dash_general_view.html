@@ -1,39 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
- <div class="overview_card">
-            <div class="overview_card-info">IA 14 días</div>
-            <div class="overview_card-icon">{{tasaInc14}}</div>
-            <span class="card-day">+{{percentageAument}}</span>
-          </div>
-          <div class="overview_card">
-            <div class="overview_card-info">IA 7 días</div>
-            <div class="overview_card-icon">{{tasaInc7}}</div>
-            <span class="card-day">{% if isMajorThanYesterday7 is True %} <i class="fas fa-angle-double-up"></i>
- {% elif isMajorThanYesterday7 is False %} <i class="fas fa-angle-double-down"></i>
- {% endif %}
- </span>
-          </div>
-          <div class="overview_card">
-            <div class="overview_card-info">Curados</div>
-            <div class="overview_card-icon">{{recovered}}</div>
-          </div>
-          <div class="overview_card">
-            <div class="overview_card-info">Fallecidos</div>
-            <div class="overview_card-icon">{{deceased}}</div>
-          </div>
+<div>
+                <h2>Incidencia</h2>
+            <div class="overview_card-icon">Tasa a 14 días {{tasaInc14}} +{{percentageAument}}</div>
+            <div class="overview_card-icon">Tasa a 7 días {{tasaInc7}}</div>
+
+            </div>
+            <div>
+                <h2>Fallecidos y recuperados totales</h2>
+                <ul>
+                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
+                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                </ul>
+            </div>
+            <div>
+                <h2>SCSS</h2>
+                <ul>
+                    <li>no headache :)</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="main_cards">
-          <div class="card">Aumento de los diagnosticados a 14 días
-              <canvas class="responsive-canvas" id="pie-chart" width="350" height="230"></canvas>
-          </div>
-          <div class="card">Aumento de ingresados
-            <canvas class="responsive-canvas" id="pie-chart3"  width="350" height="150"></canvas>
-          </div>
-          <div class="card">Evolución de fallecidos y curados
-           <canvas class="responsive-canvas" id="pie-chart2" width="350" height="250"></canvas>
-           </div>
-  <script>
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento diario de contagios</h2> 
+                <canvas class="responsive-canvas" id="pie-chart" width="350" height="230"></canvas>
+            </div>
+            <div>
+                <h2>Evolución diaria de fallecidos y curados</h2> 
+               <canvas class="responsive-canvas" id="pie-chart2" width="350" height="230"></canvas>
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento en hospitalización</h2>
+                <canvas class="responsive-canvas" id="pie-chart3" width="350" height="230"></canvas>
+            </div>
+<script>
     var ctx = document.getElementById('pie-chart').getContext('2d'); 
     var data_1 = {
         datasets: [{
@@ -41,6 +45,7 @@
         borderColor: "#99dcd1",
         fill: false,
         label: 'Contagios en un día',
+        color: setColorText(),
         data: {{ dataAument|safe }}
         }],
         labels: {{ labels|safe }}
@@ -49,9 +54,25 @@
         type: 'line',
         data: data_1,
         options: {
-                    responsive: true
+            legend: {
+                labels: {
+                    fontColor: setColorText()
                 }
-            });
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
+        });
     
     var ctx_2 = document.getElementById('pie-chart2').getContext('2d'); 
     var data_2 = {
@@ -74,8 +95,24 @@
          type: 'line',
         data: data_2,
         options: {
-            responsive: true
+            legend: {
+                labels: {
+                    fontColor: setColorText()
                 }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
             });
     var ctx_3 = document.getElementById('pie-chart3').getContext('2d'); 
     var data_3 = {
@@ -96,8 +133,25 @@
          type: 'bar',
         data: data_3,
         options: {
-            responsive: true
+            legend: {
+                labels: {
+                    fontColor: setColorText()
                 }
-            });            
-  </script>
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
+            });        
+</script>
 {% endblock %}
+</div>

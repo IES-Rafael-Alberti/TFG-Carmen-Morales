@@ -1,39 +1,33 @@
-{% extends 'base.html' %} {% block content %}
-<div class="overview_provs">
+{% extends 'base.html' %}
+{% block content %}
+<div>
+<h2>Lista de provincias</h2>
   {% for prov in provinces %}
-  <a
+  <a 
     href="{% url 'dash_province_detail_view' prov.pk %}"
     class="button button-pill"
     >{{ prov.name }}</a>
   {% endfor %}
-</div>
-<div class="main_cards" stye="margin-bottom:0px 0px 15px;">
-  <div class="card">
-    <canvas
-      class="responsive-canvas"
-      id="pie-chart"
-      width="350"
-      height="250"
-    ></canvas>
-    </div>
-    <div class="card">
-      Aumento de ingresados
-      <canvas
-        class="responsive-canvas"
-        id="pie-chart3"
-        width="350"
-        height="150"
-      ></canvas>
-    </div>
-    <div class="card">
-      Aumento de contagios diarios
-      <canvas
-        class="responsive-canvas"
-        id="pie-chart2"
-        width="350"
-        height="250"
-      ></canvas>
-    </div>
+   </div>
+   </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Situación de los hospitales en cada provincia</h2> 
+                <canvas class="responsive-canvas" id="pie-chart3" width="350" height="230"></canvas>
+            </div>
+            <div>
+                <h2>Comparación de aumentos en cada provincia</h2> 
+               <canvas class="responsive-canvas" id="pie-chart2" width="350" height="230"></canvas>
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Evolución de la positividad</h2>
+                <canvas class="responsive-canvas" id="pie-chart" width="350" height="230"></canvas>
+            </div>
+
     <script>
                 var ctx = document.getElementById('pie-chart2').getContext('2d');
                 var data_1 = {
@@ -50,14 +44,25 @@
                 var chart1 = new Chart(ctx, {
                     type: 'pie',
                     data: data_1,
-                    options: {
-                            scales: {
-                  y: {
-                    min: 0
-                  }
-                },
-                                responsive: true
-                            }
+        options: {
+            legend: {
+                labels: {
+                    fontColor: setColorText()
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
                         });
 
 
@@ -96,9 +101,16 @@
               mode: 'x',
             },
           },
+          legend: {
+                labels: {
+                    fontColor: setColorText()
+                }
+            },
           scales: {
             xAxes: [{
               stacked: true,
+              ticks: {
+                fontColor: setColorText()},
               gridLines: {
                 display: false,
               }
@@ -106,14 +118,14 @@
             yAxes: [{
               stacked: true,
               ticks: {
+                fontColor: setColorText(),
                 beginAtZero: true,
               },
               type: 'linear',
             }]
           },
           responsive: true,
-          maintainAspectRatio: false,
-          legend: { position: 'bottom' },
+          maintainAspectRatio: false
         }
       });
 
@@ -135,9 +147,25 @@
             var chart3 = new Chart(ctx_3, {
                type: 'bar',
               data: data_3,
-              options: {
-                  responsive: true
-                      }
+        options: {
+            legend: {
+                labels: {
+                    fontColor: setColorText()
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: setColorText()
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: setColorText(),
+                    }
+                }]
+            }
+        }
                   });
     </script>
     {% endblock %}

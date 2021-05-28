@@ -1,42 +1,38 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
-<div class="overview_ts"></div>
-<div class="main_cards">
-  <div class="card">
-    Aumento de los diagnosticados a 14 días
-    <canvas
-      class="responsive-canvas"
-      id="pie-chart"
-      width="350"
-      height="230"
-    ></canvas>
-  </div>
-  <div class="card">
-    <div class="prov_info-general">
-      <span class="label label-pill label-danger"
-        >IA 14 {{ tshipIncidence }}</span
-      >
-      <span class="label label-pill label-warning"
-        >{% if rules is 0 %}Nivel alto {% elif rules is 1 %} Nivel extremo {%
-        elif rules is 2 %} Nivel bajo {% endif %}</span
-      >
-      <span class="label label-pill label-warning">Cierre perimetral</span>
-      <p class="info_prov_detail">
-        <i class="fas fa-square-full"></i><b>Aumento </b> {{ tshipAument }}
-      </p>
-      <p class="info_prov_detail">
-        <i class="fas fa-square-full"></i><b>Confirmados PDIA </b> {{confirmedPDIA }}
-      </p>
-    </div>
-  </div>
-  <div class="card">
-    Evolución en hospitales
-    <canvas
-      class="responsive-canvas"
-      id="pie-chart3"
-      width="350"
-      height="150"
-    ></canvas>
-  </div>
+{% extends 'base.html' %} 
+{% block content %} 
+<div>
+<h2>Incidencia</h2>
+<ul>
+<li><b>IA 14: </b> {{ tshipIncidence }}</li>
+<li><b>Aumento: </b> {{ tshipAument }}</li>
+<li><b>Tasa a 7 días: </b>{{ tasaInc7 }}</li>
+</ul>
+</div>
+
+<div>
+<h2>Fallecidos y recuperados totales</h2>
+<ul>
+                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
+                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                </ul>
+            </div>
+            <div>
+            <h2>Nivel de la zona</h2>
+            Nivel 1
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento diario de contagios</h2> 
+                <canvas class="responsive-canvas" id="pie-chart" width="350" height="230"></canvas>
+            </div>
+            <div>
+                <h2>Evolución diaria de fallecidos y curados</h2> 
+               <canvas class="responsive-canvas" id="pie-chart3" width="350" height="230"></canvas>
+            </div>
+        </div>
+
   <script>
     var ctx = document.getElementById('pie-chart').getContext('2d');
     var data_1 = {
