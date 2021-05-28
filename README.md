@@ -227,10 +227,10 @@ Los datos recogidos en esta aplicación web son de uso público y de fuentes ofi
 <a  name="wip"></a>
 
 - [x] Añadir modo oscuro
-- [ ] Corregir diseño responsive
-- [ ] Añadir propuestas de mejoras de diseño
+- [x] Corregir diseño responsive
+- [x] Añadir propuestas de mejoras de diseño
 - [x] Añadir tarea cron para actualización automática
-
+- [ ] Añadir animaciones, transiciones e iconos
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
