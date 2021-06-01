@@ -229,6 +229,14 @@ input:focus {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.territory {
+	text-align: center;
+	text-shadow: 0 1px 0 #fff;
+	font-size: 40px;
+	font-family: "DM Sans", sans-serif;
+	margin-bottom: 10px;
+}
+
 .info_prov_detail {
   margin-top: 20px;
 }

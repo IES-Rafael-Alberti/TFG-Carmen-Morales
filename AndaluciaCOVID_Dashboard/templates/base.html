@@ -36,7 +36,7 @@
         </ul>
     </nav>
     <main id="main">
-        <h1>
+     <h1>
       <input id="something" list="somethingelse" placeholder=" Buscar un territorio..">
       <datalist id="somethingelse">
         {% for territory in territories %}
@@ -45,6 +45,7 @@
       </datalist>
       <button class="button">Buscar</button>
         </h1>
+          <h2 class="territory">{{ territoryName }}</h2>
         <div class="flex-grid">
         {% block content %}{% endblock %}
     </main>
