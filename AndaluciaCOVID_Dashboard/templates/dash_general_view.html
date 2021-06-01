@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
-                <h2>Incidencia</h2>
-            <div class="overview_card-icon">Tasa a 14 días {{tasaInc14}} +{{percentageAument}}</div>
-            <div class="overview_card-icon">Tasa a 7 días {{tasaInc7}}</div>
-
-            </div>
-            <div>
+   
+            <div class="stadistic_card">
+               <h2>Incidencia</h2>
+            <ul class="stadistic">
+                <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Tasa a 14 días:</b> {{tasaInc14}}</div></li>
+                <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Tasa a 7 días:</b> {{tasaInc7}}</div></li>
+                <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Aumento con el día anterior:</b> {{percentageAument}}</div>
+                </li>
+            </ul>
+              </div>
+            <div class="stadistic_card">
                 <h2>Fallecidos y recuperados totales</h2>
                 <ul>
-                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
-                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif">Recuperados totales {{recovered}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif">Fallecidos totales {{deceased}}</div></li>
                 </ul>
             </div>
         </div>
@@ -36,8 +40,9 @@
     var data_1 = {
         datasets: [{
         fill: true,
-        borderColor: "#99dcd1",
-        fill: false,
+        borderColor: "#e5a276",
+        backgroundColor: "#e9be91",
+        borderWidth: 1,
         label: 'Contagios en un día',
         color: setColorText(),
         data: {{ dataAument|safe }}
@@ -45,7 +50,7 @@
         labels: {{ labels|safe }}
         };  
     var chart1 = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: data_1,
         options: {
             legend: {
@@ -71,14 +76,17 @@
     var ctx_2 = document.getElementById('pie-chart2').getContext('2d'); 
     var data_2 = {
         datasets: [{
-        borderColor: "#7dcabe",
+        type: 'line',
+        borderColor: "#de425b",
+        backgroundColor: "#f3babc",
+        fill: true,
         label: 'Fallecidos totales',
-        fill: false,
         data: {{ deceasedList |safe }}
         },
         {
-        borderColor: "#5fb9ac",
-        fill: false,
+        borderColor: "#009688",
+        backgroundColor: "#99dcd1",
+        borderWidth: 1,
         label: 'Curados totales',
         data: {{ recoveredList |safe }}
         }
@@ -86,7 +94,7 @@
         labels: {{ labels2 |safe }}
         }; 
     var chart2 = new Chart(ctx_2, {
-         type: 'line',
+        type: 'bar',
         data: data_2,
         options: {
             legend: {
@@ -111,12 +119,16 @@
     var ctx_3 = document.getElementById('pie-chart3').getContext('2d'); 
     var data_3 = {
         datasets: [{
-        backgroundColor: "#3ea79a",
+        borderColor: "#de425b",
+        borderWidth: 1,
+        backgroundColor: "#e5645c",
         label: 'UCI',
         data: {{ dataICU|safe }}
         },
         {
-        backgroundColor: "#009688",
+        borderColor: "#e98163",
+        borderWidth: 1,
+        backgroundColor: "#ec9c71",
         label: 'Convencional',
         data: {{ dataHospitalizedCounter|safe }}
         }

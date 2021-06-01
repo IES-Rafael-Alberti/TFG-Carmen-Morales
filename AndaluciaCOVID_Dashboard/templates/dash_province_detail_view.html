@@ -1,26 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 <div>
 <h2>Incidencia</h2>
-<div class="overview_card-icon">Tasa a 14 días {{tasaInc14}}</div>
-<div class="overview_card-icon">Tasa a 7 días {{tasaInc7}}</div>
+<ul class="stadistic">
+<li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Tasa a 14 días: </b>{{tasaInc14}}</div></li>
+<li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Tasa a 7 días:</b> {{tasaInc7}}</div></li>
+</ul>
 </div>
 <div>
                 <h2>Fallecidos y recuperados totales</h2>
                 <ul>
-                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
-                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Recuperados totales:</b> {{recovered}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Fallecidos totales:</b> {{deceased}}</div></li>
                 </ul>
             </div>
             <div>
                 <h2>Estado de los municipios</h2>
-                    <p class="info_prov_detail">
-      <b>Municipios +500 IA: </b> {{townships500|length }}
-      <p class="show_info">{{townships500list}}</p>
-    </p>
-    <p class="info_prov_detail">
-     <b>Municipios +100 IA </b> {{townships1000|length }}
-        <p class="show_info">{{townships1000list}}</p>
-            </div>
+                <ul>
+                    <li><div class="overview_card-icon"><img src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-icono-de-contacto-de-pin-de-ubicaci-oacute-n-by-vexels.png"><b>Municipios +500 IA:</b> {{townships500list}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-icono-de-contacto-de-pin-de-ubicaci-oacute-n-by-vexels.png"><b>Municipios +1000 IA:</b> {{townships1000list}}</div></li>
+                </ul> 
+                </div>       
         </div>
 
         <div class="flex-grid">
@@ -32,7 +31,7 @@
     ></canvas>
             </div>
             <div>
-                <h2>Headline</h2> 
+                <h2>Evolución de hospitalizados</h2> 
      <canvas
       class="responsive-canvas"
       id="pie-chart3"
@@ -44,15 +43,16 @@
         var data_1 = {
             datasets: [{
             fill: true,
-            borderColor: "#99dcd1",
-            fill: false,
+            borderColor: "#e5a276",
+            backgroundColor: "#e9be91",
+            borderWidth: 1,
             label: 'Contagios en un día',
             data: {{ dataAument|safe }}
             }],
             labels: {{ labels|safe }}
             };
         var chart1 = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: data_1,
         options: {
             legend: {
@@ -78,13 +78,17 @@
           var ctx_3 = document.getElementById('pie-chart3').getContext('2d');
           var data_3 = {
             datasets: [{
-            backgroundColor: "#009688",
+            borderColor: "#009688",
+            backgroundColor: "#99dcd1",
+            borderWidth: 1,
             label: 'Hospitalizados Conv',
             data: {{ dataHospitalizedCounter|safe }}
             },
             {
-            backgroundColor: "#6ec1b5",
+            borderColor: "#de425b",
+            backgroundColor: "#f3babc",
             label: 'UCI',
+            borderWidth: 1,
             data: {{ dataICU|safe }}
             }
             ],

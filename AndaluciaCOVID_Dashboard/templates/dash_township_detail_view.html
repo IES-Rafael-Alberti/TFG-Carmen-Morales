@@ -3,22 +3,18 @@
 <div>
 <h2>Incidencia</h2>
 <ul>
-<li><b>IA 14: </b> {{ tshipIncidence }}</li>
-<li><b>Aumento: </b> {{ tshipAument }}</li>
-<li><b>Tasa a 7 días: </b>{{ tasaInc7 }}</li>
+<li><b><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif">IA 14: </b> {{ tshipIncidence }} de incidencia a 14 días</li>
+<li><b><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif">Aumento: </b> {{ tshipAument }} nuevo(s) caso(s)</li>
+<li><b><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif">Tasa a 7 días: </b>{{ tasa7days }}  de incidencia a 7 días</li>
 </ul>
 </div>
 
 <div>
 <h2>Fallecidos y recuperados totales</h2>
 <ul>
-                    <li><div class="overview_card-icon">Recuperados totales {{recovered}}</div></li>
-                    <li><div class="overview_card-icon">Fallecidos totales {{deceased}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Recuperados totales: </b>{{recovered}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://media1.giphy.com/media/13Xkz5sLdjGiQw/200w.gif"><b>Fallecidos totales: </b> {{deceased}}</div></li>
                 </ul>
-            </div>
-            <div>
-            <h2>Nivel de la zona</h2>
-            Nivel 1
             </div>
         </div>
 
@@ -27,24 +23,17 @@
                 <h2>Aumento diario de contagios</h2> 
                 <canvas class="responsive-canvas" id="pie-chart" width="350" height="230"></canvas>
             </div>
-            <div>
-                <h2>Evolución diaria de fallecidos y curados</h2> 
-               <canvas class="responsive-canvas" id="pie-chart3" width="350" height="230"></canvas>
-            </div>
         </div>
 
   <script>
     var ctx = document.getElementById('pie-chart').getContext('2d');
     var data_1 = {
-        datasets: [{
-        borderColor: "#99dcd1",
-        fill: false,
-        label: 'Confirmados 14 días POR 100K hab',
-        data: {{ confirmed14days100hab|safe }}
-        },
+        datasets: [
         {
+        borderWidth: 1,
+        backgroundColor: "#f6e3bd",
         borderColor: "#99dcd1",
-        fill: false,
+        fill: true,
         label: 'Confirmados 14 días',
         data: {{ confirmed14days|safe }}
         }
@@ -60,22 +49,6 @@
                 }
             });
 
-      var ctx_3 = document.getElementById('pie-chart3').getContext('2d');
-      var data_3 = {
-        datasets: [{
-        backgroundColor: "#009688",
-        label: 'Fallecidos',
-        data: {{ deceases|safe }}
-        }],
-        labels: {{ labels |safe }}
-        };
-      var chart3 = new Chart(ctx_3, {
-         type: 'bar',
-        data: data_3,
-        options: {
-            responsive: true
-                }
-            });
   </script>
   {% endblock %}
 </div>

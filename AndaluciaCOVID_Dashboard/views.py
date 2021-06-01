@@ -210,7 +210,6 @@ def dash_township_detail_view(request,pk):
                 str(queryset[count].date.day) + '/' + str(queryset[count].date.month))
         confirmed14days.append(register.Confirmados_PCR_TA_14d)
         confirmed14days100hab.append(register.confirmed14100hab)
-        deceases.append(register.deceases)
 
     tshipTot1 = queryset[0].totalConfirmed
     tshipTot2 = queryset[1].totalConfirmed
@@ -218,6 +217,9 @@ def dash_township_detail_view(request,pk):
     tshipAument = tshipTot1 - tshipTot2
     tshipIncidence = tship.tasa14days
     confirmedPDIA = tship.confirmedPDIA
+    tasa7days = tship.tasa7days
+    deceased = queryset[0].deceases
+    recovered = tship.deceased
 
     if (tshipIncidence>=500 and tshipIncidence<=10000):
         rules = 0
@@ -234,7 +236,9 @@ def dash_township_detail_view(request,pk):
         'confirmed14days100hab':confirmed14days100hab,
         'rules': rules,
         'confirmedPDIA':confirmedPDIA,
-        'deceases':deceases
+        'tasa7days':tasa7days,
+        'deceased':deceased,
+        'recovered':recovered
     })   
 
 def handler404(request, *args, **argv):

@@ -34,7 +34,8 @@
                     datasets: [{
                     fill: true,
                     backgroundColor: [
-                        '#009688', '#3ea79a', '#5fb9ac', '#6ec1b5', '#86d0c4','#9edfd4','#b5eee4','#7ec6b9'
+                        '#c5ca99', '#dfd6aa', '#f6e3bd', 
+                        '#f1cd9f', '#efb585','#ec9c71','#e98163','#e5645c'
                       ],
                     label: 'Contagios en un día',
                     data: {{ provincesIncidence|safe }}
@@ -82,15 +83,15 @@
           ],
           datasets: [{
             label: 'PCR 14 días',
-            backgroundColor: "#70EBD6",
+            backgroundColor: "#f1cd9f",
             data: {{pcr14days|safe}},
           }, {
             label: 'PCR 7 días',
-            backgroundColor: "#45c490",
+            backgroundColor: "#f6e3bd",
             data: {{pcr7days|safe}},
           }, {
             label: 'Curados',
-            backgroundColor: "#2e5468",
+            backgroundColor: "#c5ca99",
             data: {{recovered|safe}},
           }],
         },
@@ -132,12 +133,16 @@
             var ctx_3 = document.getElementById('pie-chart3').getContext('2d');
             var data_3 = {
               datasets: [{
-              backgroundColor: "#009688",
+              borderColor: "#efb585",
+              borderWidth: 1,
+              backgroundColor: "#f1cd9f",
               label: 'IA 14 días',
               data: {{ tasa14dias|safe }}
               },
               {
-              backgroundColor: "#6ec1b5",
+              borderColor: "#6fa577",
+              backgroundColor: "#8db27f",
+              borderWidth: 1,
               label: 'Curados',
               data: {{ recovered|safe }}
               }

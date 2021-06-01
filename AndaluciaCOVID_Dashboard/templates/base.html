@@ -7,49 +7,22 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+  <script src="{% static 'js/setColorText.js' %}"></script>
+  <script src="{% static 'js/setMenuAnimation.js' %}"></script>
+  <script src="{% static 'js/setTerritoriesProc.js' %}"></script>
   <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen" />
   </head>
   <div class="wrapper">
 <script>
-$(function () {
-  $('#something').on('input', function () {
-          var url = "{% url 'dash_township_detail_view' 123 %}";
-          var opt = $('option[value="' + $(this).val() + '"]');
-          if (opt.attr('id')!=null && opt.attr('id')!=undefined) {
-          document.location.href = url.replace('123', opt.attr('id'))
-          };
-        });
-      });
-
-function setColorText() {
- if (window.matchMedia) {
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-      return 'white'
-    } else {
-      return 'black';
-    }
-}         
-}
-
-function setHexColorText() {
- if (window.matchMedia) {
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-      return '#ffffff'
-    } else {
-      return '#000000';
-    }
-}         
-}
 </script>
-    <nav>
-
+    <nav id="nav">
         <header>
             <div class="logo">
             <img src="https://polkschoolsfl.com/wp-content/uploads/mainsite/SafetyProtocolsCOVID19Response-250x250.png">
            Covid19
+            <a href="javascript:void(0)" class="closebtn" ></a>
             </div>
         </header>
-
         <ul>
             <li>
               <span>Navegación</span>
@@ -64,7 +37,7 @@ function setHexColorText() {
             </li>
         </ul>
     </nav>
-    <main>
+    <main id="main">
         <h1>
       <input id="something" list="somethingelse" placeholder=" Buscar un territorio..">
       <datalist id="somethingelse">
