@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+API
+{% block content %}
+   
+            <div class="stadistic_card">
+               <h2>Listado de territorios</h2>
+            <ul class="stadistic">
+                <li><div class="overview_card-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcDYVx18qGpJaLVJFNSGUoQfLEXd6zAMv3A&usqp=CAU"><b>Tasa a 14 días:</b> {{tasaInc14}}</div></li>
+                <li><div class="overview_card-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcDYVx18qGpJaLVJFNSGUoQfLEXd6zAMv3A&usqp=CAU"><b>Tasa a 7 días:</b> {{tasaInc7}}</div></li>
+                <li><div class="overview_card-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcDYVx18qGpJaLVJFNSGUoQfLEXd6zAMv3A&usqp=CAU"><b>Aumento con el día anterior:</b> {{percentageAument}}</div>
+                </li>
+            </ul>
+              </div>
+            <div class="stadistic_card">
+                <ul>
+                    <li><div class="overview_card-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcDYVx18qGpJaLVJFNSGUoQfLEXd6zAMv3A&usqp=CAU">Recuperados totales {{recovered}}</div></li>
+                    <li><div class="overview_card-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcDYVx18qGpJaLVJFNSGUoQfLEXd6zAMv3A&usqp=CAU">Fallecidos totales {{deceased}}</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento diario de contagios</h2> 
+            </div>
+            <div>
+                <h2>Evolución diaria de fallecidos y curados</h2> 
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div>
+                <h2>Aumento en hospitalización</h2>
+            </div>
+
+{% endblock %}
+</div>

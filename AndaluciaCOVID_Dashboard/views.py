@@ -66,13 +66,6 @@ def dash_general_view(request):
         'percentageAument':percentageAument
     })
 
-def dash_search_view(request):
-    resultsFilter = []
-    
-    nameFilter = request.GET.get('something')
-    territoryToView = Township.objects.filter(name=nameFilter)
-    return dash_township_detail_view(request,territoryToView.first())
-
 def dash_province_view(request):
     provinces = Province.objects.order_by('name')
     etiquetas = []
@@ -256,6 +249,9 @@ def handler500(request, *args, **argv):
 
 def question_answers(request):
     return render(request, 'questions_answers.html', {})
+
+def rest_api(request):
+    return render(request, 'api.html', {})
 
 
 # API VIEWS

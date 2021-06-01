@@ -11,7 +11,7 @@ def getDetailName(request):
     territoryName = ""
     print(primary)
 
-    if ('province/detail' in path):
+    if ('provincia/detail' in path):
         territoryName = Province.objects.all().filter(pk=primaryKey)[0].name
     elif ('municipio/detail'  in path):
         territoryName = Township.objects.all().filter(pk=primaryKey)[0].name
