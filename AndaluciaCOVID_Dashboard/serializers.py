@@ -13,7 +13,7 @@ class TownshipSerializer(serializers.ModelSerializer):
     district_name = serializers.CharField(source='distrit.name')
     class Meta:
         model = Township
-        fields = ('id', 'name', 'district_name','poblation','confirmedPDIA','totalConfirmed','tasa14days','tasa7days','deceased','recovered')      
+        fields = ('id', 'name', 'district_name','confirmedPDIA','totalConfirmed','tasa14days','tasa7days','deceased','recovered')      
 
 class DistrictSerializer(serializers.ModelSerializer):
     province_name = serializers.CharField(source = 'province.name')
@@ -27,10 +27,10 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'poblation','confirmedPDIA','totalConfirmed','tasa14days','tasa7days','deceased','recovered')                
 
 class TownshipHistoricDetailSerializer(serializers.ModelSerializer):
-    district_name = serializers.CharField(source='distr.name')
+    TownshipName = serializers.CharField(source='township.name')
     class Meta:
         model = HistoricTownship
-        fields = ('id', 'date', 'district_name', 'confirmedPDIA', 'totalConfirmed', 'Hospitalized','ICU','deceased')           
+        fields = ('id','TownshipName', 'date', 'Confirmados_PCR_TA','Confirmados_PCR_TA_14d','totalConfirmed','deceases')           
 
 class RegionHistoricDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,8 +49,8 @@ class RegionAccumulatedSerializer(serializers.ModelSerializer):
         model = AcumulatedRegion
         fields = ('id', 'date', 'ccaa_name', 'confirmedPDIA', 'aument', 'pcr14days','pcr7days','totalConfirmed','Hospitalized','ICU','deceased','recovered')
 
-class ProvinceAccumulatedSerializer(serializers.ModelSerializer):
-    ccaa_name = serializers.CharField(source = 'ccaa.name')
+class ProvincesAccumulatedSerializer(serializers.ModelSerializer):
+    province = serializers.CharField(source = 'province.name')
     class Meta:
         model = AcumulatedProvinces
-        fields = ('id', 'date', 'ccaa_name', 'confirmedPDIA', 'aument', 'pcr14days','pcr7days','totalConfirmed','Hospitalized','ICU','deceased','recovered')          
+        fields = ('id', 'date', 'province', 'confirmedPDIA', 'aument', 'pcr14days','pcr7days','totalConfirmed','Hospitalized','ICU','deceased','recovered')          

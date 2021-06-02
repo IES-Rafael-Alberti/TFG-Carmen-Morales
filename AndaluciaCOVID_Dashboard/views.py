@@ -294,23 +294,24 @@ def townshipList(request):
 
 @api_view(['GET'])
 def townshipHistoricDetail(request, pk):
-    tship = Township.objects.filter(name=pk)[0].order_by('-date',)
-    townshipHistorics = HistoricTownship.objects.filter(township=tship)
+    tship = Township.objects.filter(pk=pk)[0]
+    townshipHistorics = HistoricTownship.objects.filter(township=tship).order_by('-date',)
     serializer = TownshipHistoricDetailSerializer(townshipHistorics, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 def provinceHistoricDetail(request, pk):
-    province = Province.objects.filter(pk=pk)[0].order_by('-date',)
-    provinceHistorics = HistoricProvince.objects.filter(province=province)
+    province = Province.objects.filter(pk=pk)[0]
+    provinceHistorics = HistoricProvince.objects.filter(province=province).order_by('-date',)
     serializer = ProvinceHistoricDetailSerializer(provinceHistorics, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
-def regionHistoricDetail(request):
-    regionHistorics = HistoricGeneral.objects.all().order_by('-date',)
+def regionHistoricDetail(request,pk):
+    region = Region.objects.filter(pk=pk)[0]
+    regionHistorics = HistoricGeneral.objects.filter(cAutonoma=region).order_by('-date',)
     serializer = RegionHistoricDetailSerializer(regionHistorics, many=True)
     return Response(serializer.data)
 

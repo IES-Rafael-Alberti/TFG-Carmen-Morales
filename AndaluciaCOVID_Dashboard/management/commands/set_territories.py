@@ -71,7 +71,7 @@ class Command(BaseCommand):
                     region = Region.objects.all()[0]
                     province = Province(name=prov,ccaa=Region(id=0,name="Andalucía"))
                     province.save()
-                    print("Provincia" + province.name + "añadida!")
+                    print("Provincia " + province.name + " añadida!")
         except IndexError as e:
             print(e)
 
@@ -86,7 +86,7 @@ class Command(BaseCommand):
                     if (District.objects.filter(name=distr).exists() == False and distr != "Distrito"):
                         distr = District(name=distr, province=province)
                         distr.save()
-                        print("Distrito" + distr.name + "añadido!")
+                        print("Distrito " + distr.name + " añadido!")
         except IndexError as e:
             print(e)
 
@@ -102,7 +102,7 @@ class Command(BaseCommand):
                     if (Township.objects.filter(name=ts).exists() == False and ts != "Municipio"):
                         township = Township(name=ts, distrit=district)
                         township.save()
-                        print("Municipio" + township.name + "añadido!")
+                        print("Municipio " + township.name + " añadido!")
         except IndexError as e:
             print("¡Fecha sin datos!")
 
@@ -136,7 +136,7 @@ class Command(BaseCommand):
             tship.deceased = int(listRegister[9])
             tship.recovered = int(listRegister[10])
             tship.save()   
-            print("Municipio" + tship.name + "actualizado con datos!")        
+            print("Municipio " + tship.name + " actualizado con datos!")        
               
         except IndexError as e:
             print(e)    
@@ -170,7 +170,7 @@ class Command(BaseCommand):
             province.deceased = int(listRegister[10])
             province.recovered = int(listRegister[9])
             province.save()    
-            print("Provincia" + province.name + "actualizada con datos!")        
+            print("Provincia " + province.name + " actualizada con datos!")        
         except IndexError as e:
             print("¡Fecha sin datos!")
  

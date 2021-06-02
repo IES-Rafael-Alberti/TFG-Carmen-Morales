@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   {% load static %}
   <title>{% block title %}Andalucía COVID Dashboard{% endblock %}</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
@@ -25,13 +26,11 @@
             <li>
               <span>Navegación</span>
             </li>
-            <li><a class="active">Dashboard</a>
-            </li>
-            <li><a href="{% url 'dash_general_view' %}">General</a>
-            <li><a class="" href="{% url 'dash_province_view' %}">Provincias
-            <li><a class="" href="{% url 'api-overview' %}"><a class="" href="{% url 'rest_api' %}">API</a></li>
-             <li class="aside_list-item"><a class="" href="{% url 'faq' %}">FAQ</a></li>
-            </li>
+            <li><a class="active">Dashboard</a></li>
+            <li><a href="{% url 'dash_general_view' %}">General</a></li>
+            <li><a class="" href="{% url 'dash_province_view' %}">Provincias</a></li>
+            <li><a class="" href="{% url 'rest_api' %}">API</a></li>
+            <li class="aside_list-item"><a class="" href="{% url 'faq' %}">FAQ</a></li>
             </li>
         </ul>
     </nav>

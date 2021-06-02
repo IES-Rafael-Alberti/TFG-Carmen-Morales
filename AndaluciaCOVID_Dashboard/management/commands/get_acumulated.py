@@ -47,6 +47,7 @@ class Command(BaseCommand):
                     deceased=int(listRegister[7]),
                     recovered=int(listRegister[8]))
                 newRegisterAccumulated.save()
+                print("Registro añadido")
         except IndexError as e:
             print("Fecha sin datos")
 
@@ -80,6 +81,7 @@ class Command(BaseCommand):
                     recovered=int(listRegister[8]))
                 newRegisterAccumulated.save()
                 listRegister.clear()
+                print("Registro añadido")
         except IndexError as e:
             print("Fecha sin datos")
 

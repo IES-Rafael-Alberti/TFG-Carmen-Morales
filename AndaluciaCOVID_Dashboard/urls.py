@@ -9,7 +9,6 @@ urlpatterns = [
          name='dash_province_detail_view'),
     path('municipio/detail/<int:pk>', views.dash_township_detail_view,
          name='dash_township_detail_view'),
-    path('busqueda/', views.dash_search_view, name="dash_search_view"),
     path('faq/', views.question_answers, name="faq"),
-    path('rest_api/', views.question_answers, name="rest_api")
+    path('rest_api/', views.rest_api, name="rest_api")
 ]

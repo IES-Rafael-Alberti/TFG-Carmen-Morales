@@ -13,7 +13,7 @@ from AndaluciaCOVID_Dashboard.models import *
 class Command(BaseCommand):
     help = 'Usa este comando para obtener el histórico de dats de COVID'
 
-    def updateHistoricProvince(self):
+    def updateHistoricProvinceRegion(self):
         try:
             directory = 'https://raw.githubusercontent.com/Pakillo/COVID19-Andalucia/master/datos/datos_provincias_clean.csv'
             df = pd.read_csv(directory, delimiter=",", names=[
@@ -37,9 +37,10 @@ class Command(BaseCommand):
                         newHistoric.save()
             for row in (df[df["prov"] == 'Andalucía'].values):
                 ifExists = HistoricGeneral.objects.filter(date=row[0],cAutonoma=Region.objects.all()[0])
+                cAutonom = Region.objects.filter(name=row[1])[0]
                 if (ifExists.count()==0):
                     newHistoricGeneral = HistoricGeneral(date=row[0],
-                    cAutonoma=row[1],
+                    cAutonoma=cAutonom,
                     confirmedPDIA=int(row[2]),
                     totalConfirmed=int(row[3]),
                     Hospitalized=int(row[4]),
@@ -132,8 +133,9 @@ class Command(BaseCommand):
 
   
     def handle(self, *args, **options):
-        print('Obteniendo últimos históricos...')
-        self.updateHistoricProvince()
+        print('Obteniendo últimos históricos de provincias y región...')
+        self.updateHistoricProvinceRegion()
        #self.updateHistoricDistrict()
+        print('Obteniendo últimos históricos de los municipios...')
         self.setHistoricTownships()
         print('...MIGRACIÓN REALIZADA!')
