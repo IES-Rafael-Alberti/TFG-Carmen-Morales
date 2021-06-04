@@ -27,27 +27,26 @@ a {
   cursor: pointer;
 }
 
-
 code {
-    padding: 10px!important;
-    background: black!important;
-    color: white!important;
-	font-size: 13px;
+  padding: 10px !important;
+  background: black !important;
+  color: white !important;
+  font-size: 13px;
 }
 
 pre {
-    padding: 10px!important;
-    background: rgb(65, 62, 62)!important;
-    color: white!important;
-	font-size: 13px;
-	border-color: #777;
-	border-radius: 10px;	
+  padding: 10px !important;
+  background: rgb(65, 62, 62) !important;
+  color: white !important;
+  font-size: 13px;
+  border-color: #777;
+  border-radius: 10px;
 }
 
 .btn {
-	font-family: "DM Sans", sans-serif;
-	border-radius: 0px;
-	font-size: 13px;
+  font-family: "DM Sans", sans-serif;
+  border-radius: 0px;
+  font-size: 13px;
 }
 
 ul {
@@ -63,10 +62,10 @@ nav {
 }
 
 h2 {
-	margin: -15px -15px 15px -15px;
-	padding: 12px 15px;
-	font-family: "DM Sans", sans-serif;
-  }
+  margin: -15px -15px 15px -15px;
+  padding: 12px 15px;
+  font-family: "DM Sans", sans-serif;
+}
 
 nav header {
   position: relative;
@@ -116,8 +115,18 @@ nav ul a.active {
 }
 
 a:not([href]):not([tabindex]) {
-    color: #dee7e0;
-    text-decoration: none;
+  color: #dee7e0;
+  text-decoration: none;
+}
+
+#pkProvince {
+  width: 80px;
+  padding: 10px;
+  border: rgb(153, 149, 149);
+  border-radius: 0px;
+  font: 13px "Open Sans", sans-serif;
+  background-color: rgb(212, 206, 206);
+  margin-right: 10px;
 }
 
 nav ul a:before {
@@ -288,6 +297,48 @@ input:focus {
   border: none;
 }
 
+p > a:not([href]):not([tabindex]) {
+  color: #666;
+  text-decoration: none;
+  cursor: text;
+}
+
+.overview_card-icon > a:not([href]):not([tabindex]) {
+  color: #666;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  text-decoration: none;
+  cursor: text;
+}
+/* Underline for links using background-image */
+.bg-underline {
+  background-image: linear-gradient(transparent 65%, #a9ffd9 0%);
+  background-repeat: no-repeat;
+  background-size: 100% 250%;
+  background-position: 0% 65%;
+  transition: background-position 0.5s ease 0s;
+}
+
+.bg-underline:hover {
+  background-position: 0% 100%;
+}
+
+/* Underline for links using box-shadow */
+.shadow-underline {
+  box-shadow: inset 0 -0.45em 0 #c5ffc3;
+  transition: box-shadow 0.5s ease;
+}
+
+.shadow-underline:hover {
+  box-shadow: inset 0 -1.25em 0 #c3c9ff;
+}
+
+/* Decorative static underline */
+.underline {
+  padding-right: 0.5em;
+  box-shadow: inset 0 -0.55em 0 #dbdbdb;
+}
+
 @media (max-width: 1000px) {
   .flex-grid {
     flex-direction: column;
@@ -330,7 +381,62 @@ input:focus {
     background-image: url("https://media.flaticon.com/dist/min/img/landing/coronavirus/virus.svg");
     background-repeat: no-repeat; /*Prevent showing multiple background images*/
   }
-  p {
+  p,
+  b {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+  }
+
+  .territory {
+    color: white;
+  }
+
+  .overview_card-icon > a:not([href]):not([tabindex]) {
+    color: rgb(247, 247, 247);
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    text-decoration: none;
+    cursor: text;
+  }
+
+  .bg-underline {
+    background-image: linear-gradient(transparent 65%, #a9ffd9 0%);
+    background-repeat: no-repeat;
+    background-size: 100% 250%;
+    background-position: 0% 65%;
+    transition: background-position 0.5s ease 0s;
+  }
+
+  .bg-underline:hover {
+    background-position: 0% 100%;
+  }
+
+  /* Underline for links using box-shadow */
+  .shadow-underline {
+    box-shadow: inset 0 -0.45em 0 #183318;
+    transition: box-shadow 0.5s ease;
+  }
+
+  .shadow-underline:hover {
+    box-shadow: inset 0 -1.25em 0 #1a4728;
+  }
+
+  /* Decorative static underline */
+  .underline {
+    padding-right: 0.5em;
+    box-shadow: inset 0 -0.55em 0 #153a2f;
+  }
+
+  p > a:not([href]):not([tabindex]) {
+    color: rgb(241, 241, 241);
+    text-decoration: none;
+    cursor: text;
+  }
+
+  a {
     color: white;
   }
 }

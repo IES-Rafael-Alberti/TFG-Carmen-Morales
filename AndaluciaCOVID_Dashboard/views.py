@@ -1,3 +1,4 @@
+from os import name
 from django.shortcuts import render
 import json
 from .serializers import *
@@ -207,7 +208,7 @@ def dash_township_detail_view(request,pk):
     tshipTot1 = queryset[0].totalConfirmed
     tshipTot2 = queryset[1].totalConfirmed
 
-    tshipAument = tshipTot1 - tshipTot2
+    tshipAument = tshipTot2 - tshipTot1
     tshipIncidence = tship.tasa14days
     confirmedPDIA = tship.confirmedPDIA
     tasa7days = tship.tasa7days
@@ -258,6 +259,7 @@ def rest_api(request):
 @api_view(['GET'])
 def apiOverview(request):
     api_urls = {
+        'Lista de regiones': '/region-list/',
         'Lista de provincias': '/province-list/',
         'Lista de municipios': '/township-list/',
         'Lista de distritos': '/district-list/',
@@ -269,6 +271,13 @@ def apiOverview(request):
         'Acumulados en los municipios': '/township-acumulated-all/'
     }
     return Response(api_urls)
+
+
+@api_view(['GET'])
+def regionList(request):
+    regions = Region.objects.all()
+    serializer = RegionSerializer(regions, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -327,4 +336,18 @@ def regionAccumulatedAll(request):
 def provinceAccumulatedAll(request):
     provinceAcc = AcumulatedProvinces.objects.all().order_by('-date',)
     serializer = ProvincesAccumulatedSerializer(provinceAcc, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def regionAccumulatedDetail(request, pk):
+    region = Region.objects.filter(pk=pk)[0]
+    regionAcc = AcumulatedRegion.objects.filter(ccaa=region).order_by('-date',)
+    serializer = RegionAccumulatedSerializer(regionAcc, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def provinceAccumulatedDetail(request, pk):
+    prov = Province.objects.filter(pk=pk)[0]
+    provAcc = AcumulatedProvinces.objects.filter(province=prov).order_by('-date',)
+    serializer = ProvincesAccumulatedSerializer(prov, many=True)
     return Response(serializer.data)
