@@ -21,8 +21,25 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+RUN mkdir -p /home/app
+
+# create the appropriate directories
+
+# create the app user
+RUN addgroup --system app 
+RUN adduser --system --group app
+
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/staticfiles
+WORKDIR $APP_HOME
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
 # copy project
-COPY . .
+COPY . $APP_HOME
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
@@ -35,3 +52,6 @@ RUN dos2unix /etc/cron.d/cron_job
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
+
+# change to the app user
+USER app
