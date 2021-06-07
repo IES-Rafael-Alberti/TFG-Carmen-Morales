@@ -41,17 +41,17 @@ RUN chown -R app:app $APP_HOME
 # copy project
 COPY . $APP_HOME
 
+RUN usermod -a -G app app
+
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
 # Setup cron job
 ADD cron_job /etc/cron.d/cron_job
-RUN chmod 0644 /etc/cron.d/cron_job &&\
+RUN chmod 0744 /etc/cron.d/cron_job &&\
     crontab /etc/cron.d/cron_job
 RUN dos2unix /etc/cron.d/cron_job
 
-# Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
+RUN service cron start
 
-# change to the app user
-USER app
+CMD ["cron", "-f"]
