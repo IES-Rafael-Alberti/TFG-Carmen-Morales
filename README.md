@@ -177,8 +177,8 @@ docker-compose up -d --build
 ## Hacer las migraciones necesarias
 
   
-
 ```
+docker-compose exec web python3 manage.py get_historics
 
 docker-compose exec web python3 manage.py set_territories
 
@@ -230,7 +230,7 @@ Los datos recogidos en esta aplicación web son de uso público y de fuentes ofi
 - [x] Corregir diseño responsive
 - [x] Añadir propuestas de mejoras de diseño
 - [x] Añadir tarea cron para actualización automática
-- [ ] Añadir animaciones, transiciones e iconos
+- [x] Añadir animaciones, transiciones e iconos
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
