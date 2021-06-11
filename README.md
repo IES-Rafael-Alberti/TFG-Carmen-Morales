@@ -178,13 +178,11 @@ docker-compose up -d --build
 
   
 ```
-docker-compose exec web python3 manage.py get_historics
+docker-compose exec web python3 manage.py collectstatic
 
 docker-compose exec web python3 manage.py set_territories
 
-docker-compose exec web python3 manage.py get_historics
-
-docker-compose exec web python3 manage.py get_acumulated --territorio -mun
+docker-compose exec web python3 manage.py get_historic
 
 docker-compose exec web python3 manage.py get_acumulated --territorio -pro
 
