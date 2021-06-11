@@ -28,7 +28,10 @@
 
 <a  name="introduccion"></a>
 
-Aplicación web realizada para el trabajo de fin de ciclo de Desarrollo de Aplicaciones Web sobre la evolución del COVID en Andalucía.
+Aplicación web realizada para el trabajo de fin de ciclo de Desarrollo de Aplicaciones Web sobre la evolución del COVID en Andalucía. El diagrama de clases utilizado es el siguiente:
+
+![alt text](Diagrama_clases.png)
+
 
 # :checkered_flag: Objetivos
 
