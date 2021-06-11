@@ -146,8 +146,6 @@ Ejemplos de uso
 
 python .\manage.py get_acumulated --territorio -all # Datos acumulados de Andalucía
 
-python .\manage.py get_acumulated --territorio -mun # Datos acumulados de municipios
-
 python .\manage.py get_acumulated --territorio -pro # Datos acumulados de provincias
 
 ```
