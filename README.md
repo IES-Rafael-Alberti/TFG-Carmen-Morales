@@ -18,9 +18,7 @@
 
 - [3.3. Librerías](#librerias)
 
-- [4. Instalación en local](#instalacion_local)
-
-- [5. Instalación en docker](#instalacion_docker)
+- [4. Instalación en docker](#instalacion_docker)
 
 - [6. Fuentes](#fuentes)
 
