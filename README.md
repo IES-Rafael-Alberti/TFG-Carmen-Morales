@@ -204,7 +204,7 @@ Tras la primera migración no hará falta volver a ejecutar los comandos, ya que
 ```
 Este cron_job ejecuta dichos comandos todos los días a las 14:00 y a las 18:00 de la tarde, teniendo en cuenta que los datos de la Junta de Andalucía se actualizan sobre las 12:30 - 13:30 de la tarde y teniendo en cuenta atrasos o problemas informáticos del organismo correspondiente. 
   
-Ir a `http://localhost:8000`
+Ir a `http://localhost:1337/app/general/`
 
   
 
