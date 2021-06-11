@@ -134,6 +134,8 @@ Este cron_job ejecuta dichos comandos todos los días a las 14:00 y a las 18:00 
 
 Ir a `http://localhost:1337/app/general/`
 
+También es posible utilizar el script `[despliegue.sh]` para hacer el despliegue automático una vez creados los contenedores.
+
 ## :chart_with_upwards_trend: Fuentes de los datos
 
 <a  name="fuentes"></a>
